@@ -1,10 +1,12 @@
 import Task from "./Task"
 
-const Tasks = ({ tasks, onDelete }) => {
+// catch the props
+const Tasks = ({ tasks, onDelete, onToggle }) => {
   return (
     <>
       {tasks.map ((task) => (
-        <Task key={task.id} task={task} onDelete={onDelete} />
+        // pass in the props
+        <Task key={task.id} task={task} onDelete={onDelete} onToggle={onToggle} />
       ))}
     </>
   )

@@ -33,10 +33,21 @@ function App() {
     setTasks(tasks.filter((task) => task.id !== id ));
   }
 
+  // Toggle reminder
+  const toggleReminder = (id) => {
+    setTasks(tasks.map((task) => 
+      // if task id in the current iteration is equal to the id passed in
+      // then we're going to have a specific object (modify that partiular task),
+      // else just return the task (no change)
+      task.id === id ? { ...task, reminder: !task.reminder } : task 
+      // spread the task object, and for reminder, change it to opposite of what it was
+    ))
+  }
+
   return (
     <div className='container'>
       <Header />
-      {tasks.length > 0 ? <Tasks tasks={tasks} onDelete={deleteTask} /> : 'Task list is empty!'}
+      {tasks.length > 0 ? <Tasks tasks={tasks} onDelete={deleteTask} onToggle={toggleReminder}/> : 'Task list is empty!'}
     </div>
   );
 }
