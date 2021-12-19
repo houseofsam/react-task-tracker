@@ -1,10 +1,8 @@
 import PropTypes from 'prop-types'
 import Button from './Button'
 
-const Header = ({ title }) => {
-  const onClick = () => {
-    console.log('Click')
-  }
+const Header = ({ title, formDisplay }) => {
+  const onClick = (() => formDisplay())
 
   return (
     <header className='header'>
@@ -20,6 +18,7 @@ Header.defaultProps = {
 
 Header.propTypes = {
   title: PropTypes.string.isRequired,
+  formDisplay: PropTypes.func,
 }
 
 export default Header

@@ -4,7 +4,10 @@ import Tasks from './components/Tasks';
 import AddTask from './components/AddTask';
 
 function App() {
-  // putting state here so we can access it globally throughout app
+  // State for the Add Button which toggles form display. 
+  // Form will be dependent on this piece of state.
+  const [showAddTask, setShowAddTask] = useState(false);
+  // putting tasks state here so we can access it globally throughout app
   const[tasks, setTasks] = useState([
     {
       id: 1,
@@ -60,10 +63,15 @@ function App() {
     ))
   }
 
+  // Toggle form display
+  const toggleForm = () => {
+    setShowAddTask(!showAddTask);
+  }
+
   return (
     <div className='container'>
-      <Header />
-      <AddTask onAdd={addTask} />
+      <Header formDisplay={toggleForm}/>
+      {showAddTask && <AddTask onAdd={addTask} />}
       {tasks.length > 0 ? <Tasks tasks={tasks} onDelete={deleteTask} onToggle={toggleReminder}/> : 'Task list is empty!'}
     </div>
   );
