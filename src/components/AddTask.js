@@ -1,12 +1,32 @@
 import { useState } from 'react'
 
-const AddTask = () => {
-  const[text, setText] = useState('')
-  const[day, setDay] = useState('')
-  const[reminder, setReminder] = useState(false)
+// Define states with useState hook & default values
+const AddTask = ({ onAdd }) => {
+  const[text, setText] = useState('');
+  const[day, setDay] = useState('');
+  const[reminder, setReminder] = useState(false);
+
+  const onSubmit = (e) => {
+    // prevent default form behaviour
+    e.preventDefault();
+
+    // add form validation
+    if(!text) {
+      alert('Please add a task!');
+      return
+    }
+
+    // invoke onAdd and pass it in an object with the following properties (names of states)
+    onAdd({ text, day, reminder });
+
+    // reset form values to default values upon submit 
+    setText('');
+    setDay('');
+    setReminder(false);
+  }
 
   return (
-    <form className='add-form'>
+    <form className='add-form' onSubmit={ onSubmit }>
       <div className='form-control'>
         <label> Task </label>
         <input type='text' placeholder='Add Task' value={text} onChange={(e) => setText(e.target.value)} />
@@ -19,7 +39,7 @@ const AddTask = () => {
 
       <div className='form-control form-control-check'>
         <label> Set Reminder </label>
-        <input type='checkbox' value={reminder} onChange={(e) => setReminder(e.currentTarget.checked)} />
+        <input type='checkbox' checked={reminder} value={reminder} onChange={(e) => setReminder(e.currentTarget.checked)} />
       </div>
 
       <input type='submit' value='Save Task' className='btn btn-block'/>

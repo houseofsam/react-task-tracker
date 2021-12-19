@@ -26,6 +26,20 @@ function App() {
     },
   ])
 
+  // Add task
+  const addTask = (task) => {
+    // Create random ID for each entry
+    const id = Math.floor(Math.random() * 10000) + 1;
+
+    // create new object and give it the id property we just created
+    // and copy in the task object that's passed into the function
+    const newTask = { id, ...task };
+
+    // call state function, set it as an array, copy the current tasks + and add new task to the end of array
+    setTasks([...tasks, newTask])
+    
+  }
+
   // Delete task
   const deleteTask = (id) => {
     // console.log('delete', id);
@@ -49,7 +63,7 @@ function App() {
   return (
     <div className='container'>
       <Header />
-      <AddTask />
+      <AddTask onAdd={addTask} />
       {tasks.length > 0 ? <Tasks tasks={tasks} onDelete={deleteTask} onToggle={toggleReminder}/> : 'Task list is empty!'}
     </div>
   );
