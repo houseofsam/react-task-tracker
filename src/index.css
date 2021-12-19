@@ -94,16 +94,19 @@ body {
 .form-control-check {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-start;
 }
 
 .form-control-check label {
-  flex: 1;
+  flex: 0 1 auto;
+  width: fit-content;
+  padding-right: 8px;
 }
 
 .form-control-check input {
-  flex: 2;
+  flex: 0 1 auto;
   height: 20px;
+  width: fit-content;
 }
 
 footer {
