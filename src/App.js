@@ -63,14 +63,9 @@ function App() {
     ))
   }
 
-  // Toggle form display
-  const toggleForm = () => {
-    setShowAddTask(!showAddTask);
-  }
-
   return (
     <div className='container'>
-      <Header formDisplay={toggleForm}/>
+      <Header toggleForm={() => setShowAddTask(!showAddTask)} showAdd={showAddTask} />
       {showAddTask && <AddTask onAdd={addTask} />}
       {tasks.length > 0 ? <Tasks tasks={tasks} onDelete={deleteTask} onToggle={toggleReminder}/> : 'Task list is empty!'}
     </div>
