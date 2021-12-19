@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Header from './components/Header'
 import Tasks from './components/Tasks';
 import AddTask from './components/AddTask';
@@ -8,26 +8,28 @@ function App() {
   // Form will be dependent on this piece of state.
   const [showAddTask, setShowAddTask] = useState(false);
   // putting tasks state here so we can access it globally throughout app
-  const[tasks, setTasks] = useState([
-    {
-      id: 1,
-      text: 'Dishes',
-      day: 'December 18th',
-      reminder: true,
-    },
-    {
-      id: 2,
-      text: 'Drink Water',
-      day: 'December 18th',
-      reminder: false,
-    },
-    {
-      id: 3,
-      text: 'Doc Appt',
-      day: 'December 19th',
-      reminder: true,
-    },
-  ])
+  const[tasks, setTasks] = useState([]);
+
+  useEffect(() => {
+    // async bc it will call fetchTasks which returns a promise
+    const getTasks = async() => {
+      const tasksFromServer = await fetchTasks();
+      // add it to our state
+      setTasks(tasksFromServer)
+    }
+
+    getTasks();
+  }, []);
+  // ^Add dependency array. No dependecies here, so pass in empty array
+
+  // Fetch Tasks
+  const fetchTasks = async() => {
+    // fetch returns a promise so we want to await that promise
+    const res = await fetch('http://localhost:5000/tasks')
+    const data = await res.json();
+
+    return data;
+  };
 
   // Add task
   const addTask = (task) => {
