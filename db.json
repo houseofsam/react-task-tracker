@@ -13,16 +13,10 @@
       "reminder": false
     },
     {
-      "text": "Doc Appt",
+      "text": "Submit project",
       "day": "Tomorrow",
       "reminder": true,
-      "id": "eEJf61g"
-    },
-    {
-      "text": "Visit family",
-      "day": "Tomorrow",
-      "reminder": false,
-      "id": "fLthPvx"
+      "id": "QoroDat"
     }
   ]
 }
