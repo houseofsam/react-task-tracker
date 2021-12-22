@@ -4,7 +4,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Final Product
 
-[GIF Screenrecording of App](https://github.com/houseofsam/react-task-tracker/blob/53360d78e8d25763beee40d43dcf6208e73f3f43/docs/React%20Task%20Tracker.gif?raw=true)
+![GIF Screenrecording of App](https://github.com/houseofsam/react-task-tracker/blob/53360d78e8d25763beee40d43dcf6208e73f3f43/docs/React%20Task%20Tracker.gif?raw=true)
 
 
 ## Available Scripts
