@@ -16,7 +16,7 @@ To run the project in the project directory, run the following commands:
 1) ### `npm install -g serve`
 2) ### `serve -s build -p 5000`
 
-Serves mock backend data 'JSON Server' on localhost:5000/tasks 
+Serves mock backend data 'JSON Server' on [http://localhost:5000/tasks](http://localhost:5000/tasks)
 
 3) ### `npm start`
 
